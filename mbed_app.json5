@@ -1,0 +1,89 @@
+{
+    "config": {
+        "serial-bootloader-enable": {
+            "help": "Build bootloader with serial update support",
+            "value": 0
+        },
+        "secondary-slot-in-flash": {
+            "help": "If enabled, store the secondary slot in the application flash immediately after the primary slot.",
+            "value": false
+        }
+    },
+
+
+    "target_overrides": {
+        "*": {
+            "platform.stdio-baud-rate": 115200,
+            "target.restrict_size": "0x20000",
+            "target.c_lib": "small",
+            "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_DEBUG",
+            "mbed-trace.enable": true,
+            "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
+            "mbed-trace.fea-ipv6": false
+        },
+        // "NRF52840_DK": {
+        //     "target.features_remove": ["CRYPTOCELL310"],
+        //     "target.macros_remove": ["MBEDTLS_CONFIG_HW_SUPPORT"],
+        //     "mcuboot.primary-slot-address": "0x20000",
+        //     "mcuboot.slot-size": "0xC0000",
+        //     "mcuboot.scratch-address": "0xE0000",
+        //     "mcuboot.scratch-size": "0x20000",
+        //     "mcuboot.max-img-sectors": "0x180",
+        //     "mcuboot.read-granularity": 4,
+        //     "qspif.QSPI_MIN_PROG_SIZE": 4
+        // },
+        // "EP_AGORA": {
+        //     "target.features_remove": ["CRYPTOCELL310"],
+        //     "target.macros_remove": ["MBEDTLS_CONFIG_HW_SUPPORT"],
+        //     "mcuboot.primary-slot-address": "0x20000",
+        //     "mcuboot.slot-size": "0xC0000",
+        //     "mcuboot.scratch-address": "0xE0000",
+        //     "mcuboot.scratch-size": "0x20000",
+        //     "mcuboot.max-img-sectors": "0x180",
+        //     "mcuboot.read-granularity": 4,
+        //     "qspif.QSPI_MIN_PROG_SIZE": 4
+        // },
+        // "DISCO_L475VG_IOT01A": {
+        //     "mcuboot.primary-slot-address": "0x8020000",
+        //     "mcuboot.slot-size": "0xC0000",
+        //     "mcuboot.scratch-address": "0x80E0000",
+        //     "mcuboot.scratch-size": "0x20000",
+        //     "mcuboot.max-img-sectors": "0x180",
+        //     "mcuboot.read-granularity": 1,
+        //     "qspif.QSPI_MIN_PROG_SIZE": 1
+        // },
+        // "K64F": {
+        //     "mcuboot.primary-slot-address": "0x20000",
+        //     "mcuboot.slot-size": "0xC0000",
+        //     "mcuboot.scratch-address": "0xE0000",
+        //     "mcuboot.scratch-size": "0x20000",
+        //     "mcuboot.max-img-sectors": "0x180",
+        //     "mcuboot.read-granularity": 512
+        // },
+
+        "MCU_STM32H743xI": {
+            // Configure bootloader to live in the first sector of flash
+            "target.memory_bank_config": {
+                "IROM1": {
+                    "size": 0x20000
+                }
+            },
+
+            // Since STM32H743 boards have no external block device, keep everything in the MCU flash.
+            "app.secondary-slot-in-flash": true,
+
+            // Slot size can be as big as 896k, since we need to reserve the first flash sector for the bootloader
+            // and the last flash sector for scratch space
+            "mcuboot.primary-slot-address": "0x20000",
+            "mcuboot.slot-size": "0xE0000",
+            
+            "mcuboot.max-img-sectors": "0x180",
+            "mcuboot.read-granularity": 512,
+
+            // STM32H7 flash sector size is 128k, so we need to make the scratch region at least that big
+            "mcuboot.scratch-address": "0x1E0000",
+            "mcuboot.scratch-size": "0x20000",
+
+        }
+    }
+}

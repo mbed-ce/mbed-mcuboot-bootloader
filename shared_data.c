@@ -20,7 +20,7 @@
  * limitations under the License.
  */
 
-#include "boot_record.h"
+#include "bootutil/boot_record.h"
 #include "shared_data.h"
 
 #include <string.h>

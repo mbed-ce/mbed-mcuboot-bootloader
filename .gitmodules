@@ -1,0 +1,6 @@
+[submodule "mbed-os"]
+	path = mbed-os
+	url = https://github.com/mbed-ce/mbed-os.git
+[submodule "mcuboot"]
+	path = mcuboot
+	url = https://github.com/multiplemonomials/mcuboot.git

@@ -124,7 +124,11 @@ The demo application prints the version number of the application installed in t
 
 It is beneficial to first install mcuboot's imgtool python command line tool:
 
-`pip3 install --user -r mcuboot/scripts/requirements.txt && python3 mcuboot/scripts/setup.py install`
+```
+python3 -m pip install --user -r mcuboot/scripts/requirements.txt
+python3 -m pip install --user mcuboot/scripts
+```
+(on Windows, use `python` instead of `python3`)
 
 You should also install the python package `intelhex` if it is not already installed: 
 
@@ -140,9 +144,17 @@ For this project the required steps to sign an application are:
 
 1.) Generate an rsa2048 key pair: `imgtool keygen -k signing-keys.pem -t rsa-2048`
 
-2.) Extract the public key into a C data structure so it can be built into the bootloader: 
+2.) Extract the public key into a C data structure so it can be built into the bootloader.
 
-`imgtool getpub -k signing-keys.pem >> signing_keys.c`
+In bash or cmd shell:
+```
+imgtool getpub -k signing-keys.pem > signing_keys.c
+```
+
+In Powershell:
+```
+imgtool getpub -k signing-keys.pem | Out-File signing_keys.c -Encoding utf8
+```
 
 **Note:** The output of this command formats the variables to a specific name that is declared as an extern in mcuboot's sources. It must **not** be modified manually.
 

@@ -1,0 +1,41 @@
+# Example GitHub Actions workflow which provides a CI build for your Mbed CE project.
+
+name: Test that this Mbed project compiles
+
+on: push
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    container: ghcr.io/armmbed/mbed-os-env:master-latest
+    
+    strategy:
+      matrix:
+        mbed_target: 
+          # Change the below to match the target(s) you want to compile the project for.
+          - NUCLEO_H743ZI2
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install python3-venv
+        run: |
+          apt-get update
+          apt-get install -y python3-venv
+
+      - name: Generate transient key pair
+        run: |
+          python3 -m pip install --user -r mcuboot/scripts/requirements.txt
+          python3 -m pip install --user mcuboot/scripts
+          imgtool keygen -k signing-keys.pem -t rsa-2048
+          imgtool getpub -k signing-keys.pem > signing_keys.c
+
+      - name: Build project for ${{ matrix.mbed_target }}
+        run: |
+            mkdir build && cd build
+            python3 -m pip install -r 
+            cmake .. -GNinja -DMBED_TARGET=${{ matrix.mbed_target }}
+            ninja

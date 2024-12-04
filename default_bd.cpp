@@ -8,6 +8,8 @@
 #include "BlockDevice.h"
 
 #include "SlicingBlockDevice.h"
+#include "FlashIAPBlockDevice.h"
+
 
 #if COMPONENT_SPIF
 #include "SPIFBlockDevice.h"
@@ -29,6 +31,16 @@ const spi_pinmap_t static_spi_pinmap = get_spi_pinmap(MBED_CONF_SD_SPI_MOSI, MBE
 #endif
 #endif
 
+#if MBED_CONF_APP_SECONDARY_SLOT_IN_FLASH
+
+mbed::BlockDevice* get_secondary_bd(void) {
+
+    // Use a section of FlashIAP immediately after the secondary slot
+    static FlashIAPBlockDevice flashBD(MCUBOOT_PRIMARY_SLOT_START_ADDR + MCUBOOT_SLOT_SIZE, MCUBOOT_SLOT_SIZE);
+    return &flashBD;
+}
+
+#else
 BlockDevice *BlockDevice::get_default_instance()
 {
 #if COMPONENT_SPIF
@@ -64,7 +76,7 @@ BlockDevice *BlockDevice::get_default_instance()
 
 #else
 
-    return NULL;
+#error No block device set up for secondary slot!
 
 #endif
 
@@ -81,4 +93,4 @@ mbed::BlockDevice* get_secondary_bd(void) {
     static mbed::SlicingBlockDevice sliced_bd(default_bd, 0x0, MCUBOOT_SLOT_SIZE);
     return &sliced_bd;
 }
-
+#endif
