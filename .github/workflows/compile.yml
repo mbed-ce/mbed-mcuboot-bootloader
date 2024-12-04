@@ -37,6 +37,5 @@ jobs:
       - name: Build project for ${{ matrix.mbed_target }}
         run: |
             mkdir build && cd build
-            python3 -m pip install -r 
             cmake .. -GNinja -DMBED_TARGET=${{ matrix.mbed_target }}
             ninja
