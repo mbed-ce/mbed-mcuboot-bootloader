@@ -14,7 +14,6 @@
     "target_overrides": {
         "*": {
             "platform.stdio-baud-rate": 115200,
-            "target.restrict_size": "0x20000",
             "target.c_lib": "small",
             "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_DEBUG",
             "mbed-trace.enable": true,
@@ -52,14 +51,27 @@
         //     "mcuboot.read-granularity": 1,
         //     "qspif.QSPI_MIN_PROG_SIZE": 1
         // },
-        // "K64F": {
-        //     "mcuboot.primary-slot-address": "0x20000",
-        //     "mcuboot.slot-size": "0xC0000",
-        //     "mcuboot.scratch-address": "0xE0000",
-        //     "mcuboot.scratch-size": "0x20000",
-        //     "mcuboot.max-img-sectors": "0x180",
-        //     "mcuboot.read-granularity": 512
-        // },
+
+        "K64F": {
+            // Configure bootloader to live in the first sector of flash
+            "target.memory_bank_config": {
+                "IROM1": {
+                    "size": 0x20000
+                }
+            },
+
+            // On K64F we store the secondary slot in external memory, not internal.
+            // So, the primary slot can take up most of flash.
+            "mcuboot.primary-slot-address": "0x20000",
+            "mcuboot.slot-size": "0xC0000",
+
+            // Store the scratch space at the end of flash
+            "mcuboot.scratch-address": "0xE0000",
+            "mcuboot.scratch-size": "0x20000",
+
+            "mcuboot.max-img-sectors": "0x180",
+            "mcuboot.read-granularity": 512 // External SD card used as block device, this is its read size.
+        },
 
         "MCU_STM32H743xI": {
             // Configure bootloader to live in the first sector of flash
@@ -75,14 +87,12 @@
             // Slot size can be as big as 896k, since we need to reserve the first flash sector for the bootloader
             // and the last flash sector for scratch space
             "mcuboot.primary-slot-address": "0x20000",
+            "mcuboot.max-img-sectors": "7", // 7 flash sectors per slot
             "mcuboot.slot-size": "0xE0000",
-            
-            "mcuboot.max-img-sectors": "0x180",
-            "mcuboot.read-granularity": 512,
 
             // STM32H7 flash sector size is 128k, so we need to make the scratch region at least that big
             "mcuboot.scratch-address": "0x1E0000",
-            "mcuboot.scratch-size": "0x20000",
+            "mcuboot.scratch-size": "0x20000"
 
         }
     }
