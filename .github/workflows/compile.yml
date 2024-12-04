@@ -28,6 +28,7 @@ jobs:
 
       - name: Generate transient key pair
         run: |
+          python3 -m pip install --user --upgrade pyopenssl # Work around runtime error
           python3 -m pip install --user -r mcuboot/scripts/requirements.txt
           python3 -m pip install --user mcuboot/scripts
           imgtool keygen -k signing-keys.pem -t rsa-2048
