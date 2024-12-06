@@ -113,7 +113,7 @@ Other commonly-used configuration options are:
 
 Many of these have been mentioned previously. 
 
-**NOTE:** It is important to ensure the `mcuboot` configuration parameters are **the same** for the bootloader and the bootable application! Also `mcuboot.header-size` has been deprecated as of mcuboot v1.7 and onward.
+**NOTE:** It is important to ensure the `mcuboot` configuration parameters are **the same** for the bootloader and the bootable application! Also `mcuboot.header-size` has been deprecated as of mcuboot v1.7 and onward. We no-longer need to set it in mbed_app.json file. But we still need to note down the planned header-size and pass it to imgtool when signing built images.
 
 ## Running the Demo
 
