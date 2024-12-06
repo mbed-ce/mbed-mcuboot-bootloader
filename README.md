@@ -36,7 +36,7 @@ When deciding what to boot/update, the mcuboot bootloader looks at an installed 
 
 By default, this header is configured to be 4kB in size. This can be adjusted using the configuration parameter `mcuboot.header_size`. 
 
-**However,** due to the way the FlashIAP block device currently works while erasing, the header_size should be configured to be the size of an erase sector (4kB in the case of an nRF52840). Erasing using the FlashIAPBlockDevice only works if the given address is erase-sector aligned!
+**However,** due to the way the FlashIAP block device currently works while erasing, the header_size should be configured to be the size of an erase sector (4kB in the case of an nRF52840). Erasing using the FlashIAPBlockDevice only works if the given address is erase-sector aligned! On the other hand, there is a hard upper limit of `< 65536` enforced by imgtool script. This needs to be carefully taken into consideration when choosing a MCU. Because a erase-sector of size >=4KB <64KB may actually not be available between the end of bootloader and start of primary application. For example, STM32F767/9xGx series MCU with dual bank enabled.
 
 This header is prepended to the application binary during the signing process (explained later).
 
@@ -60,7 +60,7 @@ In our case, our configuration gives us:
 
 `TLV region size = 0xE0000 - 0xDF000 = 0x1000`
 
-In most cases, 4kB will be plenty of room for the required TLV trailers. Enabling features such as update binary encryption increases the number of required TLV trailer entries and so you may need to adjust the size of the TLV trailer region based on your use case. During signing, the imgtool script will complain if there is not enough room for TLV trailers.
+In most cases, 4kB will be plenty of room for the required TLV trailers. Enabling features such as update binary encryption increases the number of required TLV trailer entries and so you may need to adjust the size of the TLV trailer region based on your use case. During signing, the imgtool script will complain if there is not enough room for TLV trailers. On a different note, region reserved for TLV trailers doesn't have to align with erasable flash sectors. This is different from how region reserved for application header information which needs to be carefully configured to align with erasable flash sectors.
 
 See the [mcuboot Image Trailer documentation](https://github.com/mcu-tools/mcuboot/blob/master/docs/design.md#image-trailer) for more information.
 
@@ -107,14 +107,13 @@ Other commonly-used configuration options are:
 "mcuboot.slot-size",
 "mcuboot.scratch-address",
 "mcuboot.scratch-size",
-"mcuboot.header-size",
 "mcuboot.max-img-sectors",
 "mcuboot.read-granularity",
 ```
 
 Many of these have been mentioned previously. 
 
-**NOTE:** It is important to ensure the `mcuboot` configuration parameters are **the same** for the bootloader and the bootable application!
+**NOTE:** It is important to ensure the `mcuboot` configuration parameters are **the same** for the bootloader and the bootable application! Also `mcuboot.header-size` has been deprecated as of mcuboot v1.7 and onward. We no-longer need to set it in mbed_app.json file. But we still need to note down the planned header-size and pass it to imgtool when signing built images.
 
 ## Running the Demo
 
@@ -193,7 +192,7 @@ Explanation of each option:
 - `--header-size 4096`: this must be the same as the value specified in `mcuboot.header-size` configuration (4096 bytes by default)
 - `--pad-header`: this tells imgtool to insert the entire header, including any necessary padding bytes.
 - `-S 0xC0000`: this specifies the maximum size of the application ("slot size"). It **must** be the same as the configured `mcuboot.slot-size`!
-- `--pad`: this should only be used for binaries you plan on initially flashing to your target at the factory. It pads the resulting binary to the slot size and adds initialized trailer TLVs. This is not needed for update binaries.
+- `--pad`: this should only be used for binaries you plan on initially flashing to your target at the factory. It pads the resulting binary to the slot size and adds initialized trailer TLVs. This shall NOT be included for update binaries. Otherwise bootloader will automatically upgrade to firmware images saved into secondary block device even if `boot_set_pending()` has not been called by primary application, essentially setup an unattended firmware upgrade. This can create unwanted consequences.
 
 
 ### Creating the update binary
@@ -457,4 +456,9 @@ A common goal of bootloader implementers is to minimize the code size of the boo
 
 For example, you can configure `target.printf_lib` to `minimal-printf` rather than `std` to use a reduced-feature-set version of `printf`.
 
-You can also entirely disable logging output by setting `mbed-trace.enable` to `false`. You can also eliminate the stdio console entirely (TODO - explain how to do this).
+You can also entirely disable logging output by setting `mbed-trace.enable` to `false`. You can also eliminate the stdio console entirely by including the following line in the `target_overrides` section of your mbed_app.json/json5 file:
+```
+"target.console-uart": false,
+"target.console-uart-flow-control": null,
+```
+As a reference, with mbed-trace and console output disabled alltogether, release as build profile, and SPIF/QSPIF as secondary block device, the final image size of bootloader amounts to about 45KB. In theory 48KB reserved for bootloader should be enough, but compiler will complain if `target.restrict_size' is set at 0xC000. For budgeting purpose, a minimum 64KB or 0x10000 is needed for bootloader.
