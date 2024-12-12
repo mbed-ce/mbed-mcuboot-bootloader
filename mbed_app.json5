@@ -15,6 +15,7 @@
         "*": {
             "platform.stdio-baud-rate": 115200,
             "target.c_lib": "small",
+            "mcuboot.log-enable": true,
             "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_DEBUG",
             "mbed-trace.enable": true,
             "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
