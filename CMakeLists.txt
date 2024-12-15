@@ -12,12 +12,7 @@ project(mbed-mcuboot-bootloader)
 set(MBED_MCUBOOT_BOOTLOADER_SOURCES
 	secondary_bd.cpp
 	enc_key.c
-	shared_data.c
-	signing_keys.c)
-	
-if(NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/signing_keys.c)
-    message(FATAL_ERROR "Missing signing_keys.c in source directory!  Please follow the README instructions to generate the signing keys!")
-endif()
+	shared_data.c)
 
 # Compile mcuboot sources
 add_subdirectory(mcuboot/boot/bootutil)

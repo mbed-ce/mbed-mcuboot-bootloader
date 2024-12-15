@@ -9,6 +9,7 @@
 
 #include "SlicingBlockDevice.h"
 #include "FlashIAPBlockDevice.h"
+#include "BufferedBlockDevice.h"
 
 #if MBED_CONF_APP_SECONDARY_SLOT_IN_FLASH
 
@@ -35,9 +36,14 @@ mbed::BlockDevice* get_secondary_bd(void) {
     // If this assert fails, there is no block def
     MBED_ASSERT(default_bd != nullptr);
 
+    // mcuboot assumes that the read size of the secondary block device is the same as the read size
+    // of flash, so use a BufferedBlockDevice to wrap the underlying BD and ensure this is the case.
+    static mbed::BufferedBlockDevice buffered_bd(default_bd);
+
     // In this case, our flash is much larger than a single image so
     // slice it into the size of an image slot
-    static mbed::SlicingBlockDevice sliced_bd(default_bd, 0x0, MCUBOOT_SLOT_SIZE);
+    static mbed::SlicingBlockDevice sliced_bd(&buffered_bd, 0x0, MCUBOOT_SLOT_SIZE);
+
     return &sliced_bd;
 }
 #endif

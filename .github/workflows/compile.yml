@@ -33,10 +33,9 @@ jobs:
           python3 -m pip install --user -r mcuboot/scripts/requirements.txt
           python3 -m pip install --user mcuboot/scripts
           $HOME/.local/bin/imgtool keygen -k signing-keys.pem -t rsa-2048
-          $HOME/.local/bin/imgtool getpub -k signing-keys.pem > signing_keys.c
 
       - name: Build project for ${{ matrix.mbed_target }}
         run: |
             mkdir build && cd build
-            cmake .. -GNinja -DMBED_TARGET=${{ matrix.mbed_target }}
+            cmake .. -GNinja -DMBED_TARGET=${{ matrix.mbed_target }} -DMCUBOOT_SIGNING_KEY=signing-keys.pem
             ninja
