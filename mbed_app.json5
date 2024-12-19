@@ -24,8 +24,8 @@
             "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
             "mbed-trace.fea-ipv6": false,
 
-            // Change to true to enable encryption of the image
-            "mcuboot.encrypt-rsa": false
+            // Uncomment to enable encryption of the image
+            // "mcuboot.encrypt-rsa": true
         },
         // "NRF52840_DK": {
         //     "target.features_remove": ["CRYPTOCELL310"],
