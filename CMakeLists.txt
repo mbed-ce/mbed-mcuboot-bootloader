@@ -11,7 +11,6 @@ project(mbed-mcuboot-bootloader)
 
 set(MBED_MCUBOOT_BOOTLOADER_SOURCES
 	secondary_bd.cpp
-	enc_key.c
 	shared_data.c)
 
 # Compile mcuboot sources

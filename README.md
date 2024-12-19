@@ -9,14 +9,14 @@ Go to the [mcuboot repository](https://github.com/mcu-tools/mcuboot) for more in
 
 ## Memory Regions Overview
 
-The diagram below shows the default memory map configuration used for this mcuboot demo on the nRF52840. The nRF52840 has a total of 1MB of internal program flash. The following sections detail how the bounds of each memory region is configured.
+The diagram below shows the various memory regions used by mcuboot and your application. The following sections detail how the bounds of each memory region is configured.
 
-![nRF52840-mcuboot-map](assets/nRF52840-mcuboot-map.png)
+![mcuboot region map](assets/generic-memory-diagram.png)
 
 ### Bootloader
 The bootloader (the application in this repository) lives in the first region of flash where the processor begins execution. The basic mcuboot bootloader does not implement any interfaces to receive updates. It simply looks at available application "slots". The application (or another bootloader) is responsible for loading application updates into a slot visible to the mcuboot bootloader. Update candidates are typically placed in the "secondary" flash region.
 
-The bootloader has a maximum size set by `target.restrict_size`. In this example the bootloader is restricted to a size of `0x20000` bytes. This is way larger than required but allows the bootloader to be built with a debug profile during development. In production the bootloader size should be optimized based on your use case.
+The bootloader has a maximum size set by `target.restrict_size`. In this example the bootloader is restricted to a size of `0x20000` bytes (128kiB). This is way larger than required but allows the bootloader to be built with a debug profile during development. In production the bootloader size should be optimized based on your use case. If encryption is not used and debugging is disabled, the bootloader should be able to fit in a 64kiB region, but with encryption and/or debugging active, the needed size increases.
 
 Upon bootup, mcuboot looks at two memory regions, one called the "primary slot" and the other called the "secondary slot", to determine if a firmware update is available and should be installed.
 

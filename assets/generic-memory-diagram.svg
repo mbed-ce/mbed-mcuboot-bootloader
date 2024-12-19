@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg5"
+   inkscape:version="1.2.1 (9c6d41e410, 2022-07-14)"
+   sodipodi:docname="generic-memory-diagram.svg"
+   inkscape:export-filename="generic-memory-diagram.png"
+   inkscape:export-xdpi="120.95238"
+   inkscape:export-ydpi="120.95238"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview7"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showgrid="false"
+     showguides="false"
+     inkscape:zoom="0.66331437"
+     inkscape:cx="336.19051"
+     inkscape:cy="386.69447"
+     inkscape:window-width="1278"
+     inkscape:window-height="1408"
+     inkscape:window-x="1273"
+     inkscape:window-y="827"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs2">
+    <rect
+       x="234.52453"
+       y="745.1484"
+       width="555.39673"
+       height="65.027256"
+       id="rect2447" />
+    <rect
+       x="61.829194"
+       y="617.22592"
+       width="235.59055"
+       height="166.83222"
+       id="rect4650" />
+    <rect
+       x="105.53604"
+       y="680.12114"
+       width="144.9788"
+       height="51.168989"
+       id="rect4429" />
+    <rect
+       x="101.27196"
+       y="679.58813"
+       width="150.3089"
+       height="53.83404"
+       id="rect4423" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-5" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-5-2" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-5-2-5" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-5-2-5-9" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-5-2-5-6" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-5-2-6" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-5-7" />
+    <rect
+       x="105.53604"
+       y="680.12115"
+       width="144.97881"
+       height="51.168987"
+       id="rect4429-0-9" />
+    <rect
+       x="61.829193"
+       y="617.22589"
+       width="228.80644"
+       height="233.16577"
+       id="rect4650-4" />
+    <rect
+       x="61.829193"
+       y="617.22589"
+       width="235.59055"
+       height="166.83221"
+       id="rect4650-42" />
+    <rect
+       x="61.829193"
+       y="617.22589"
+       width="235.59055"
+       height="166.83221"
+       id="rect4650-6" />
+    <rect
+       x="61.829193"
+       y="617.22589"
+       width="228.80644"
+       height="233.16577"
+       id="rect4650-4-2" />
+    <rect
+       x="61.829193"
+       y="617.22589"
+       width="235.59055"
+       height="166.83221"
+       id="rect4650-0" />
+    <rect
+       x="61.829193"
+       y="617.22589"
+       width="235.59055"
+       height="166.83221"
+       id="rect4650-0-1" />
+    <rect
+       x="61.829193"
+       y="617.22589"
+       width="235.59055"
+       height="166.83221"
+       id="rect4650-0-1-5" />
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#eeeeee;stroke:#9e9e9e;stroke-width:0.290092;stroke-linejoin:round;stroke-opacity:0.979275"
+       id="rect294"
+       width="45.3941"
+       height="137.35992"
+       x="85.367302"
+       y="35.84008" />
+    <rect
+       style="fill:#eeeeee;stroke:#9e9e9e;stroke-width:0.21648;stroke-linejoin:round;stroke-opacity:0.979275"
+       id="rect294-5"
+       width="45.467712"
+       height="76.369431"
+       x="85.57383"
+       y="216.71915" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.14812px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#362c89;fill-opacity:1;stroke:none;stroke-width:0.0787032"
+       x="85.014709"
+       y="34.168755"
+       id="text404"><tspan
+         sodipodi:role="line"
+         id="tspan402"
+         style="stroke-width:0.0787032;fill:#362c89;fill-opacity:1"
+         x="85.014709"
+         y="34.168755">Start of Flash (lowest address)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.14812px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#362c89;fill-opacity:1;stroke:none;stroke-width:0.0787032"
+       x="85.051651"
+       y="177.97575"
+       id="text404-8"><tspan
+         sodipodi:role="line"
+         id="tspan402-7"
+         style="stroke-width:0.0787032;fill:#362c89;fill-opacity:1"
+         x="85.051651"
+         y="177.97575">End of Flash (highest address)</tspan></text>
+    <rect
+       style="fill:#ffed77;fill-opacity:1;stroke:#9e9e9e;stroke-width:0.291042;stroke-linejoin:round;stroke-opacity:0.979275"
+       id="rect537"
+       width="41.884617"
+       height="18.333332"
+       x="87.001671"
+       y="37.415852" />
+    <rect
+       style="fill:#ff9977;fill-opacity:1;stroke:#9e9e9e;stroke-width:0.291042;stroke-linejoin:round;stroke-opacity:0.979275"
+       id="rect537-5"
+       width="41.884617"
+       height="18.333332"
+       x="86.97506"
+       y="153.15385" />
+    <rect
+       style="fill:#77ffd1;fill-opacity:1;stroke:#9e9e9e;stroke-width:0.300448;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect537-7"
+       width="41.645943"
+       height="93.358467"
+       x="87.045692"
+       y="58.034695" />
+    <text
+       xml:space="preserve"
+       transform="scale(0.26458333)"
+       id="text4421"
+       style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4423);display:inline;fill:#000000;fill-opacity:1;stroke:none" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,70.285623,-135.04261)"
+       id="text4427"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="105.53516"
+         y="692.28547"
+         id="tspan13465">Bootloader</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,61.054124,-118.11016)"
+       id="text4427-7"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="136.64854"
+         y="692.28547"
+         id="tspan13467">Primary Slot</tspan></text>
+    <path
+       style="font-variation-settings:normal;opacity:1;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.59, 0.53;stroke-dashoffset:0;stroke-opacity:0.979275;stop-color:#000000;stop-opacity:1"
+       d="M 79.90862,59.411761 H 14.641758 l 0,-40.286956 h 65.416443 v 23.13508 l 9.972019,3.98881 -10.171459,3.19104 z"
+       id="path4550"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="font-variation-settings:normal;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.59, 0.53;stroke-dashoffset:0;stroke-opacity:0.979275;stop-color:#000000"
+       d="M 79.894442,173.11425 H 14.62758 v -40.28696 h 65.416443 l 0,25.53252 9.972019,3.98881 -10.171459,3.19104 z"
+       id="path4550-1"
+       sodipodi:nodetypes="cccccccc" />
+    <path
+       style="font-variation-settings:normal;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.59, 0.53;stroke-dashoffset:0;stroke-opacity:0.979275;stop-color:#000000"
+       d="M 79.894443,128.83848 H 14.627581 V 63.422039 h 65.416443 l 0,1.9944 9.972021,3.98881 -10.171461,3.19104 z"
+       id="path4550-9"
+       sodipodi:nodetypes="cccccccc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0.08261091,-141.4247)"
+       id="text4648"
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4650);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="61.830078"
+         y="628.17453"
+         id="tspan13471"><tspan
+   style="font-size:10.6667px;fill:#271c81"
+   id="tspan13469">Region Name</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="643.17453"
+         id="tspan13473">Bootloader
+</tspan><tspan
+         x="61.830078"
+         y="658.17453"
+         id="tspan13477"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13475">Start Address</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="673.17453"
+         id="tspan13481">&lt;start of flash&gt;<tspan
+   style="font-weight:bold"
+   id="tspan13479">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="688.17453"
+         id="tspan13487"><tspan
+           style="font-size:10.6667px;fill:#281d82"
+           id="tspan13483">Size</tspan><tspan
+           style="font-weight:bold"
+           id="tspan13485">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="703.17453"
+         id="tspan13489">Depends, but max size is bounded by </tspan><tspan
+         x="61.830078"
+         y="718.17453"
+         id="tspan13493"><tspan
+   style="font-weight:bold"
+   id="tspan13491">mcuboot.primary-slot-address </tspan>
+</tspan><tspan
+         x="61.830078"
+         y="733.17453"
+         id="tspan13497"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13495">Compiled By</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="748.17453"
+         id="tspan13499">mbed-mcuboot-bootloader project
+</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0.69510298,-97.011278)"
+       id="text4648-6"
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4650-4);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="61.830078"
+         y="628.17453"
+         id="tspan13503"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13501">Region Name</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="643.17453"
+         id="tspan13505">Primary Slot
+</tspan><tspan
+         x="61.830078"
+         y="658.17453"
+         id="tspan13507">
+</tspan><tspan
+         x="61.830078"
+         y="673.17453"
+         id="tspan13511"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13509">Start Address</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="688.17453"
+         id="tspan13515"><tspan
+           style="font-weight:bold"
+           id="tspan13513">mcuboot.primary-slot-address
+</tspan></tspan><tspan
+         x="61.830078"
+         y="703.17453"
+         id="tspan13519"><tspan
+           style="font-weight:bold"
+           id="tspan13517">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="718.17453"
+         id="tspan13525"><tspan
+           style="font-size:10.6667px;fill:#281d82"
+           id="tspan13521">Size</tspan><tspan
+           style="font-weight:bold"
+           id="tspan13523">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="733.17453"
+         id="tspan13529"><tspan
+           style="font-weight:bold"
+           id="tspan13527">mcuboot.slot-size
+</tspan></tspan><tspan
+         x="61.830078"
+         y="748.17453"
+         id="tspan13533"><tspan
+   style="font-weight:bold"
+   id="tspan13531"> </tspan>
+</tspan><tspan
+         x="61.830078"
+         y="763.17453"
+         id="tspan13537"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13535">Compiled By</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="778.17453"
+         id="tspan13539">Your application project which </tspan><tspan
+         x="61.830078"
+         y="793.17453"
+         id="tspan13541">submodules mcuboot (e.g. mbed-</tspan><tspan
+         x="61.830078"
+         y="808.17453"
+         id="tspan13543">mcuboot-demo-app)</tspan></text>
+    <rect
+       style="fill:#9bff77;fill-opacity:1;stroke:none;stroke-width:0.280389;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect982"
+       width="38.323719"
+       height="13.044871"
+       x="88.705124"
+       y="70.622757" />
+    <path
+       style="font-variation-settings:normal;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.264619;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.58772, 0.529239;stroke-dashoffset:0;stroke-opacity:0.979275;stop-color:#000000"
+       d="m 134.97094,86.756249 h 65.0787 V 50.135408 h -65.22785 v 23.135397 l -9.94327,3.988865 10.14213,3.191083 z"
+       id="path4550-0"
+       sodipodi:nodetypes="cccccccc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,120.64406,-110.92852)"
+       id="text4648-2"
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4650-0);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="61.830078"
+         y="628.17453"
+         id="tspan13547"><tspan
+   style="font-size:10.6667px;fill:#271c81"
+   id="tspan13545">Region Name</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="643.17453"
+         id="tspan13549">Application Header
+</tspan><tspan
+         x="61.830078"
+         y="658.17453"
+         id="tspan13553"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13551">Start Address</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="673.17453"
+         id="tspan13557"><tspan
+           style="font-weight:bold"
+           id="tspan13555">mcuboot.primary-slot-address 
+</tspan></tspan><tspan
+         x="61.830078"
+         y="688.17453"
+         id="tspan13563"><tspan
+           style="font-size:10.6667px;fill:#281d82"
+           id="tspan13559">Size</tspan><tspan
+           style="font-weight:bold"
+           id="tspan13561">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="703.17453"
+         id="tspan13567"><tspan
+   style="font-weight:bold"
+   id="tspan13565">mcuboot.header-size </tspan>
+</tspan><tspan
+         x="61.830078"
+         y="718.17453"
+         id="tspan13571"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13569">Compiled By</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="733.17453"
+         id="tspan13573">imgtool during image signing</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22983861,0,0,0.22983861,66.990321,-80.805283)"
+       id="text4427-7-1"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-5);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="115.00472"
+         y="692.28547"
+         id="tspan13575">Application Header</tspan></text>
+    <rect
+       style="fill:#b577ff;fill-opacity:1;stroke:none;stroke-width:0.312594;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect982-9"
+       width="38.147438"
+       height="16.288462"
+       x="88.846161"
+       y="133.41025" />
+    <path
+       style="font-variation-settings:normal;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.264619;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.58772, 0.529239;stroke-dashoffset:0;stroke-opacity:0.979275;stop-color:#000000"
+       d="m 135.58293,173.07615 h 65.0787 l 0,-43.67212 h -65.22785 l 0,9.64432 -9.94327,3.98886 10.14213,3.19109 z"
+       id="path4550-0-3"
+       sodipodi:nodetypes="cccccccc" />
+    <rect
+       style="fill:#77acff;fill-opacity:1;stroke:none;stroke-width:0.52598;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect982-6"
+       width="38.243862"
+       height="46.000271"
+       x="88.76268"
+       y="85.519104" />
+    <path
+       style="font-variation-settings:normal;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.264619;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.58772, 0.529239;stroke-dashoffset:0;stroke-opacity:0.979275;stop-color:#000000"
+       d="m 135.04327,126.19504 h 65.0787 V 89.574195 H 134.89412 V 104.5301 l -9.94327,3.98887 10.14213,3.19108 z"
+       id="path4550-0-39"
+       sodipodi:nodetypes="cccccccc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,121.25605,-31.800929)"
+       id="text4648-2-3"
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4650-0-1);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="61.830078"
+         y="628.17453"
+         id="tspan13579"><tspan
+   style="font-size:10.6667px;fill:#271c81"
+   id="tspan13577">Region Name</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="643.17453"
+         id="tspan13581">Application Trailer TLVs
+</tspan><tspan
+         x="61.830078"
+         y="658.17453"
+         id="tspan13585"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13583">Start Address</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="673.17453"
+         id="tspan13589">&lt;after the end of the application&gt;<tspan
+   style="font-weight:bold"
+   id="tspan13587"> 
+</tspan></tspan><tspan
+         x="61.830078"
+         y="688.17453"
+         id="tspan13595"><tspan
+           style="font-size:10.6667px;fill:#281d82"
+           id="tspan13591">Size</tspan><tspan
+           style="font-weight:bold"
+           id="tspan13593">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="703.17453"
+         id="tspan13599"><tspan
+           style="font-weight:bold"
+           id="tspan13597">mcuboot.slot-size -
+</tspan></tspan><tspan
+         x="61.830078"
+         y="718.17453"
+         id="tspan13603"><tspan
+           style="font-weight:bold"
+           id="tspan13601">mcuboot.header-size -
+</tspan></tspan><tspan
+         x="61.830078"
+         y="733.17453"
+         id="tspan13607"><tspan
+   style="font-weight:bold"
+   id="tspan13605">&lt;application size&gt;</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="748.17453"
+         id="tspan13611"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13609">Compiled By</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="763.17453"
+         id="tspan13613">imgtool during image signing</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,119.83609,-73.358927)"
+       id="text4648-2-3-6"
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4650-0-1-5);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="61.830078"
+         y="628.17453"
+         id="tspan13617"><tspan
+   style="font-size:10.6667px;fill:#271c81"
+   id="tspan13615">Region Name</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="643.17453"
+         id="tspan13619">Application
+</tspan><tspan
+         x="61.830078"
+         y="658.17453"
+         id="tspan13623"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13621">Start Address</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="673.17453"
+         id="tspan13627"><tspan
+   style="font-weight:bold"
+   id="tspan13625">mcuboot.primary-slot-address</tspan> + </tspan><tspan
+         x="61.830078"
+         y="688.17453"
+         id="tspan13633"><tspan
+   style="font-weight:bold"
+   id="tspan13629">mcuboot.header-size</tspan>  <tspan
+   style="font-weight:bold"
+   id="tspan13631">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="703.17453"
+         id="tspan13639"><tspan
+           style="font-size:10.6667px;fill:#281d82"
+           id="tspan13635">Size</tspan><tspan
+           style="font-weight:bold"
+           id="tspan13637">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="718.17453"
+         id="tspan13641">&lt;application size&gt;
+</tspan><tspan
+         x="61.830078"
+         y="733.17453"
+         id="tspan13645"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13643">Compiled By</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="748.17453"
+         id="tspan13647">Your project</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22983861,0,0,0.22983861,67.22412,-49.386227)"
+       id="text4427-7-1-0"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-5-2);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="141.30348"
+         y="692.28547"
+         id="tspan13649">Application</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22983861,0,0,0.22983861,67.175719,-18.247881)"
+       id="text4427-7-1-0-5"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-5-2-5);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="141.30348"
+         y="692.28547"
+         id="tspan13651">Application
+</tspan><tspan
+         x="139.52614"
+         y="708.95209"
+         id="tspan13653">Trailer TLVs</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22983861,0,0,0.22983861,66.72671,4.09634)"
+       id="text4427-7-1-0-5-8"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-5-2-5-9);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="127.90833"
+         y="692.28547"
+         id="tspan13655">Scratch Region</tspan></text>
+    <rect
+       style="fill:#77ffd1;fill-opacity:1;stroke:#9e9e9e;stroke-width:0.264919;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect537-7-0"
+       width="41.681473"
+       height="72.522202"
+       x="87.325935"
+       y="218.71326" />
+    <path
+       style="font-variation-settings:normal;fill:#e8e8e8;fill-opacity:1;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.59, 0.53;stroke-dashoffset:0;stroke-opacity:0.979275;stop-color:#000000"
+       d="M 81.031367,286.1313 H 15.764505 v -65.41645 h 65.416443 v 1.9944 l 9.972018,3.98881 -10.171458,3.19104 z"
+       id="path4550-9-0"
+       sodipodi:nodetypes="cccccccc" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,59.843921,41.856666)"
+       id="text4427-7-19"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-9);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="127.40703"
+         y="692.28547"
+         id="tspan13657">Secondary Slot</tspan></text>
+    <rect
+       style="fill:#9bff77;fill-opacity:1;stroke:none;stroke-width:0.24386;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect982-1"
+       width="38.359737"
+       height="9.8580742"
+       x="89.055634"
+       y="229.28201" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,1.8320271,60.28154)"
+       id="text4648-6-5"
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4650-4-2);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="61.830078"
+         y="628.17453"
+         id="tspan13661"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13659">Region Name</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="643.17453"
+         id="tspan13663">Secondary Slot
+</tspan><tspan
+         x="61.830078"
+         y="658.17453"
+         id="tspan13665">
+</tspan><tspan
+         x="61.830078"
+         y="673.17453"
+         id="tspan13669"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13667">Start Address</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="688.17453"
+         id="tspan13671">Determined by </tspan><tspan
+         x="61.830078"
+         y="703.17453"
+         id="tspan13675"><tspan
+   style="font-weight:bold"
+   id="tspan13673">get_secondary_bd()</tspan> </tspan><tspan
+         x="61.830078"
+         y="718.17453"
+         id="tspan13679">implementation.<tspan
+   style="font-weight:bold"
+   id="tspan13677">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="733.17453"
+         id="tspan13683"><tspan
+           style="font-weight:bold"
+           id="tspan13681">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="748.17453"
+         id="tspan13689"><tspan
+           style="font-size:10.6667px;fill:#281d82"
+           id="tspan13685">Size</tspan><tspan
+           style="font-weight:bold"
+           id="tspan13687">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="763.17453"
+         id="tspan13693"><tspan
+           style="font-weight:bold"
+           id="tspan13691">mcuboot.slot-size
+</tspan></tspan><tspan
+         x="61.830078"
+         y="778.17453"
+         id="tspan13697"><tspan
+   style="font-weight:bold"
+   id="tspan13695"> </tspan>
+</tspan><tspan
+         x="61.830078"
+         y="793.17453"
+         id="tspan13701"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13699">Compiled By</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="808.17453"
+         id="tspan13703">Your application project which </tspan><tspan
+         x="61.830078"
+         y="823.17453"
+         id="tspan13705">submodules mcuboot (e.g. mbed-</tspan><tspan
+         x="61.830078"
+         y="838.17453"
+         id="tspan13707">mcuboot-demo-app)</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22983861,0,0,0.22983861,67.331394,76.200003)"
+       id="text4427-7-1-1"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-5-7);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="115.00472"
+         y="692.28547"
+         id="tspan13709">Application Header</tspan></text>
+    <rect
+       style="fill:#b577ff;fill-opacity:1;stroke:none;stroke-width:0.27187;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect982-9-3"
+       width="38.183292"
+       height="12.309271"
+       x="89.196793"
+       y="276.7308" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22983861,0,0,0.22983861,67.375768,123.10356)"
+       id="text4427-7-1-0-5-4"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-5-2-5-6);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="141.30348"
+         y="692.28547"
+         id="tspan13711">Application
+</tspan><tspan
+         x="139.52614"
+         y="708.95209"
+         id="tspan13713">Trailer TLVs</tspan></text>
+    <rect
+       style="fill:#77acff;fill-opacity:1;stroke:none;stroke-width:0.457456;stroke-linejoin:round;stroke-dasharray:none;stroke-opacity:0.979275"
+       id="rect982-6-3"
+       width="38.279808"
+       height="34.76263"
+       x="89.113251"
+       y="240.53925" />
+    <text
+       xml:space="preserve"
+       transform="matrix(0.22983861,0,0,0.22983861,67.424168,99.862654)"
+       id="text4427-7-1-0-9"
+       style="font-style:normal;font-weight:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;text-align:center;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4429-0-5-2-6);display:inline;fill:#000000;fill-opacity:1;stroke:none"
+       x="40.589088"
+       y="0"><tspan
+         x="141.30348"
+         y="692.28547"
+         id="tspan13715">Application</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.03542px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#362c89;fill-opacity:1;stroke:none;stroke-width:0.200886"
+       x="74.710358"
+       y="12.448822"
+       id="text2173"><tspan
+         sodipodi:role="line"
+         id="tspan2171"
+         style="stroke-width:0.200886;fill:#362c89;fill-opacity:1"
+         x="74.710358"
+         y="12.448822">Main Flash Bank</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:8.03542px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#362c89;fill-opacity:1;stroke:none;stroke-width:0.200886"
+       x="61.021751"
+       y="195.06862"
+       id="text2173-2"><tspan
+         sodipodi:role="line"
+         id="tspan2171-8"
+         style="stroke-width:0.200886;fill:#362c89;fill-opacity:1"
+         x="61.021751"
+         y="195.06862">Secondary Block Device</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,-20.025641,1.4102564)"
+       id="text2445"
+       style="font-style:normal;font-weight:normal;font-size:16px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect2447);display:inline;fill:#362c89;fill-opacity:1;stroke:none"><tspan
+         x="234.52539"
+         y="759.74572"
+         id="tspan13717">This could be a region of the main flash bank, or a partition of any </tspan><tspan
+         x="234.52539"
+         y="779.74572"
+         id="tspan13719">supported block device (e.g. a QSPI flash or MicroSD card)</tspan></text>
+    <text
+       xml:space="preserve"
+       transform="matrix(0.26458333,0,0,0.26458333,0.41714631,-28.603221)"
+       id="text4648-5"
+       style="font-style:normal;font-weight:normal;font-size:12px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;white-space:pre;shape-inside:url(#rect4650-6);display:inline;fill:#000000;fill-opacity:1;stroke:none"><tspan
+         x="61.830078"
+         y="628.17453"
+         id="tspan13723"><tspan
+   style="font-size:10.6667px;fill:#271c81"
+   id="tspan13721">Region Name</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="643.17453"
+         id="tspan13725">Scratch Region
+</tspan><tspan
+         x="61.830078"
+         y="658.17453"
+         id="tspan13729"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13727">Start Address</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="673.17453"
+         id="tspan13733"><tspan
+           style="font-weight:bold"
+           id="tspan13731">mcuboot.scratch-address
+</tspan></tspan><tspan
+         x="61.830078"
+         y="688.17453"
+         id="tspan13739"><tspan
+           style="font-size:10.6667px;fill:#281d82"
+           id="tspan13735">Size</tspan><tspan
+           style="font-weight:bold"
+           id="tspan13737">
+</tspan></tspan><tspan
+         x="61.830078"
+         y="703.17453"
+         id="tspan13743"><tspan
+   style="font-weight:bold"
+   id="tspan13741">mcuboot.scratch-size</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="718.17453"
+         id="tspan13747"><tspan
+   style="font-size:10.6667px;fill:#281d82"
+   id="tspan13745">Compiled By</tspan>
+</tspan><tspan
+         x="61.830078"
+         y="733.17453"
+         id="tspan13749">mcuboot image tool</tspan></text>
+  </g>
+</svg>

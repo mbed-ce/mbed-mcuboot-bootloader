@@ -10,6 +10,9 @@
         }
     },
 
+    "macros": [
+        "MBEDTLS_CIPHER_MODE_CTR"
+    ],
 
     "target_overrides": {
         "*": {
@@ -19,7 +22,10 @@
             "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_DEBUG",
             "mbed-trace.enable": true,
             "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
-            "mbed-trace.fea-ipv6": false
+            "mbed-trace.fea-ipv6": false,
+
+            // Change to true to enable encryption of the image
+            "mcuboot.encrypt-rsa": false
         },
         // "NRF52840_DK": {
         //     "target.features_remove": ["CRYPTOCELL310"],
@@ -105,6 +111,18 @@
             "mcuboot.scratch-address": "0x1E0000",
             "mcuboot.scratch-size": "0x20000"
 
+        },
+
+        // Config by @zhiyong-ft for NUCLEO_F767ZI.
+        // Assumes that an external SPI flash is connected
+        "NUCLEO_F767ZI": {
+            "target.components_add": ["SPIF"],
+            "mcuboot.primary-slot-address": "0x8010000",
+            "mcuboot.slot-size": "0xB0000",
+            "mcuboot.scratch-address": "0x80C0000",
+            "mcuboot.scratch-size": "0x40000",
+            "mcuboot.max-img-sectors": "0x180",
+            "mcuboot.read-granularity": 1
         }
     }
 }
