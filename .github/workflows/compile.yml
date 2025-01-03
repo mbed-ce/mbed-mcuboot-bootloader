@@ -15,6 +15,7 @@ jobs:
           # Change the below to match the target(s) you want to compile the project for.
           - NUCLEO_H743ZI2
           - K64F
+          - MIMXRT1060_EVK
     
     steps:
       - name: Checkout

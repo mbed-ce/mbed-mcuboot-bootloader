@@ -15,8 +15,8 @@
 
 mbed::BlockDevice* get_secondary_bd(void) {
 
-    // Use a section of FlashIAP immediately after the secondary slot
-    static FlashIAPBlockDevice flashBD(MCUBOOT_PRIMARY_SLOT_START_ADDR + MCUBOOT_SLOT_SIZE, MCUBOOT_SLOT_SIZE);
+    // Use FlashIAP for the secondary BD.
+    static FlashIAPBlockDevice flashBD(MBED_CONF_APP_SECONDARY_SLOT_FLASH_START_ADDR, MCUBOOT_SLOT_SIZE);
     return &flashBD;
 }
 
@@ -33,7 +33,7 @@ mbed::BlockDevice* get_secondary_bd(void) {
     // Otherwise it will return the flash IAP block device.
     mbed::BlockDevice* default_bd = mbed::BlockDevice::get_default_instance();
 
-    // If this assert fails, there is no block def
+    // If this assert fails, there is no default block device defined for your board.
     MBED_ASSERT(default_bd != nullptr);
 
     // mcuboot assumes that the read size of the secondary block device is the same as the read size

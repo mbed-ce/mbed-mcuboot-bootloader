@@ -7,6 +7,10 @@
         "secondary-slot-in-flash": {
             "help": "If enabled, store the secondary slot in the application flash immediately after the primary slot.",
             "value": false
+        },
+        "secondary-slot-flash-start-addr": {
+            "help": "If secondary-slot-in-flash is enabled, this sets the start address of the secondary slot.",
+            "value": null
         }
     },
     "target_overrides": {
@@ -14,7 +18,7 @@
             "platform.stdio-baud-rate": 115200,
             "target.c_lib": "small",
             "mcuboot.log-enable": true,
-            "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_INFO",
+            "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_INFO", // Change DEBUG to INFO for debug prints
             "mbed-trace.enable": true,
             "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
             "mbed-trace.fea-ipv6": false,
@@ -83,6 +87,31 @@
             "mcuboot.read-granularity": 512, // External SD card used as block device, this is its read size.
 
             "mcuboot.max-img-sectors": "1536" // External SD card has smaller sector size, so divide slot size by read granularity
+        },
+
+        "MIMXRT1060_EVK": {
+            "target.memory_bank_config": {
+                "EXT_FLASH": {
+                    "size": 0x20000
+                }
+            },
+
+            // Primary slot is 3MiB and begins right after the bootloader
+            "mcuboot.primary-slot-address": "0x60020000",
+            "mcuboot.slot-size": "0x300000",
+
+            // Use flash for secondary slot as well
+            "secondary-slot-in-flash": true,
+            "secondary-slot-flash-start-addr": "0x60320000",
+
+            // Store the scratch space at the end of flash
+            "mcuboot.scratch-address": "0x60620000",
+            "mcuboot.scratch-size": "0x20000",
+
+            "mcuboot.read-granularity": 1, // Flash is byte addressable
+
+            "mcuboot.max-img-sectors": 768, // Maximum flash sectors per slot. 3MiB/4kiB = 768.
+            "mcuboot.flash-block-size": 256
         },
 
         "MCU_STM32H743xI": {

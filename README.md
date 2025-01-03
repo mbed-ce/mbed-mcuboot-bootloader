@@ -60,6 +60,8 @@ If configured as such, mcuboot can perform a "swap" update where it will copy th
 
 To perform this kind of swap update, mcuboot requires a non-volatile "scratch" space in memory to store pieces of application code and update status information. This enables mcuboot to safely continue an update/revert procedure in the event of a power loss.
 
+While the scratch region can be as small as one erase sector, making the scratch region larger will reduce wear on the scratch flash sectors when installing updates (because the entire image is swapped via the scratch sector as an intermediary).
+
 The scratch region starting address may be specified with the configuration parameter, `mcuboot.scratch-address`. The size of the scratch space can be configured using `mcuboot.scratch-size` -- this value **must** be erase-sector aligned (ie: a multiple of the internal flash's eraseable size).
 
 For more advanced information about configuring the scratch space region, see the [mcuboot documentation on Image Slots](https://github.com/mcu-tools/mcuboot/blob/master/docs/design.md#image-slots). For more information on swap updates, see the [mcuboot documentation on Swap Updates](https://github.com/mcu-tools/mcuboot/blob/master/docs/design.md#image-swapping)
@@ -119,7 +121,7 @@ $ git clone --recursive https://github.com/mbed-ce/mbed-mcuboot-bootloader.git
 
 Then, set up the GNU ARM toolchain (and other programs) on your machine using [the toolchain setup guide](https://github.com/mbed-ce/mbed-os/wiki/Toolchain-Setup-Guide).
 
-Now, set up the CMake project for editing as you would normally.  Make sure to configure an upload method.  We have three ways to do this:
+Now, set up the CMake project for editing as you would normally.  Make sure to configure an upload method other than MBED, as that upload method does not allow flashing specific regions of memory by address.  We have three ways to do this:
 - On the [command line](https://github.com/mbed-ce/mbed-os/wiki/Project-Setup:-Command-Line)
 - Using the [CLion IDE](https://github.com/mbed-ce/mbed-os/wiki/Project-Setup:-CLion)
 - Using the [VS Code IDE](https://github.com/mbed-ce/mbed-os/wiki/Project-Setup:-VS-Code)
@@ -288,6 +290,142 @@ Notice that now SimpleApp is running instead of UpdaterApp! The update was perfo
 The simple application will do this when you press the button.  If you reboot without pressing the button, you will see mcuboot revert back to the updater application.
 
 In real world situations, your application should run a self test routine to ensure it can receive updates in the future (eg: the UART software works as expected, the BLE stack initializes successfully, etc).
+
+## Porting to New Devices
+Currently, mcuboot only has existing configurations for a few Mbed targets.  If you need to run mcuboot on a different target, you will need to create the appropriate configs.
+
+### Understanding your Target Memory Config
+In order to create the memory bank config for your target, you will need to understand the layout of its flash bank(s).  The easiest way to get this information is to watch the output from the first configure of Mbed.  For example, on MIMXRT1060_EVK, I see this:
+```
+Summary of available memory banks:
+Target RAM banks: -----------------------------------------------------------
+0. SDRAM, start addr 0x80000000, size 256.0 MiB
+1. SRAM_DTC, start addr 0x20000000, size 256.0 KiB
+2. SRAM_ITC, start addr 0x00000000, size 128.0 KiB
+3. SRAM_OC, start addr 0x20280000, size 128.0 KiB
+4. SRAM_OC2, start addr 0x20200000, size 512.0 KiB
+
+Target ROM banks: -----------------------------------------------------------
+0. EXT_FLASH, start addr 0x60000000, size 8.0 MiB
+```
+
+We can see that there is exactly one ROM bank called EXT_FLASH, and its size is 8.0 MiB.  If you see multiple ROM banks instead of one, you will need to consult your target MCU's manual and linker script to determine which one is used for the main application.
+
+The other piece of information that you need is the page and sector size of your ROM bank, and of the secondary block device if not using XIP mode. This will require a trip to your MCU datasheet, or the datasheet for the external flash for chips that don't have internal flash like the MIMXRT1060.  Note that mcuboot *can* handle flashes with non-uniform sector sizes, but you will have to be extra careful about assigning things to sectors correctly.
+
+### Allocating Memory
+
+Now we need to decide what slot size we're going to use and allocate the space into regions. On the MIMXRT1060_EVK we have 8MiB of flash available (quite a lot!), split into 4k erase sectors and 256 byte programmable pages.  We need to use that flash to store both the primary slot and the secondary slot. Let's say we also want to reserve a bit of space for using KVStore to store data in flash. So, let's go with:
+- 128kiB (offset 0 - offset 0x20000) for the bootloader
+- 3MiB for primary slot (offset 0x20000 - offset 0x320000)
+- 3MiB for secondary slot (offset 0x320000 - offset 0x620000)
+- 128kiB scratch space (offset 0x620000 - offset 0x640000)
+- Remaining space (2MiB - 256k) for FlashIAPBlockDevice (offset 0x640000 - offset 0x800000)
+
+### Checking the Linker Script
+Before building the project, you will need to check that your device linker script has been ported to use memory banks. Unfortunately, memory bank support is a more recent feature of Mbed and the majority of devices have not had their linker scripts updated to support it yet.
+
+To find the linker script for your target, you can watch the build output. You should see a line like this:
+```
+Preprocess linker script: MIMXRT1052xxxxx.ld -> mbed-mimxrt1060-evk.link_script.ld
+```
+This means the linker script for your target is called `MIMXRT1052xxxxx.ld`.  Search for this file in the mbed-os source tree and open it.  Look for a block like this:
+```
+MEMORY
+{
+<snip>
+  m_text                (RX)  : ORIGIN = MBED_CONFIGURED_ROM_BANK_EXT_FLASH_START, LENGTH = MBED_CONFIGURED_ROM_BANK_EXT_FLASH_SIZE
+<snip>
+```
+
+You want the entry in MEMORY called `m_text` or `m_flash` or `m_rom` -- wherever the code for your device is stored.
+
+If the entry is defined in terms of `MBED_CONFIGURED_ROM_BANK` constants, this linker script has already been upgraded.  If not, and it references `MBED_APP_START` and `MBED_APP_SIZE`, or it just uses constant addresses, then this target still needs to be upgraded.
+
+Please file a PR with mbed-ce/mbed-os asking for the linker script to be updated, or, if you are feeling adventurous, you can update the linker script yourself.  Updates can be as simple as defining the text section in terms of the `MBED_CONFIGURED_ROM_BANK` constants, though there are also a number of other fixes that are useful for older linker scripts.
+
+### Setting Up Bootloader mbed_app.json
+
+Based on what we've learned, we would add a new entry in mbed_app.json like:
+```js
+    "MIMXRT1060_EVK": {
+        "target.memory_bank_config": {
+            "EXT_FLASH": {
+                "size": 0x20000
+            }
+        },
+
+        // Primary slot is 3MiB and begins right after the bootloader
+        "mcuboot.primary-slot-address": "0x60020000",
+        "mcuboot.slot-size": "0x300000",
+
+        // Use flash for secondary slot as well
+        "secondary-slot-in-flash": true,
+        "secondary-slot-flash-start-addr": "0x60320000",
+
+        // Store the scratch space at the end of flash
+        "mcuboot.scratch-address": "0x60620000",
+        "mcuboot.scratch-size": "0x20000",
+
+        "mcuboot.read-granularity": 1, // Flash is byte addressable
+
+        "mcuboot.max-img-sectors": 768, // Maximum flash sectors per slot. 3MiB/4kiB = 768.
+        "mcuboot.flash-block-size": 256
+    },
+```
+Keep in mind that on MIMXRT, the flash base address in memory is 0x60000000, so we have to add that to all the offsets to get absolute addresses.
+
+Note: Be careful of the mcuboot.max-img-sectors setting!  This needs to be the maximum number of sectors per slot in either the primary or secondary slot, whichever is greater. This means you need to check the sector size of your secondary block device too.
+
+Note: mcuboot defaults to a flash block size of 8, i.e. it will try to program flash in chunks as small as 8 bytes. The block size on this board is much larger, so we need to increase that constant.
+
+Now, you can flash the bootloader to your device using the steps above.  Make sure that it boots and you see some activity on the serial port before continuing.  You should see something like:
+```
+[INFO][BL]: Starting MCUboot
+[INFO][MCUb]: Primary image: magic=bad, swap_type=0x0, copy_done=0x2, image_ok=0x2
+[INFO][MCUb]: Scratch: magic=unset, swap_type=0x1, copy_done=0x3, image_ok=0x3
+[INFO][MCUb]: Boot source: none
+[INFO][MCUb]: Image index: 0, Swap type: none
+[ERR ][BL]: Failed to locate firmware image, error: -1
+```
+
+### Setting Up Application mbed_app.json
+Now we can set up the demo app.  Its mbed_app.json should look the same as the bootloader, *except* the `target.memory_bank_config` section.  We want this application to go into the application region of the primary slot. So, we must set the start address to `mcuboot.primary-slot-address` + `mcuboot.header-size` (which defaults to 0x1000).  Meanwhile, the size should be set to extend to the end of the primary slot (yes there are some TLVs after there, but the image tool will warn if there isn't enough space).
+
+So we'd add the following block:
+```js
+    "MIMXRT1060_EVK": {
+        "target.memory_bank_config": {
+            "EXT_FLASH": {
+                "start": 0x60021000, // mcuboot.primary-slot-address + mcuboot.header-size
+                    "size": 0x2FF000 // mcuboot.slot-size - mcuboot.header-size
+            }
+        },
+    
+        // Primary slot is 3MiB and begins right after the bootloader
+        "mcuboot.primary-slot-address": "0x60020000",
+        "mcuboot.slot-size": "0x300000",
+
+        // Use flash for secondary slot as well
+        "secondary-slot-in-flash": true,
+        "secondary-slot-flash-start-addr": "0x60320000",
+
+        // Store the scratch space at the end of flash
+        "mcuboot.scratch-address": "0x60620000",
+        "mcuboot.scratch-size": "0x20000",
+
+        "mcuboot.read-granularity": 1, // Flash is byte addressable
+
+        "mcuboot.max-img-sectors": 768, // Maximum flash sectors per slot. 3MiB/4kiB = 768.
+        "mcuboot.flash-block-size": 256,
+
+        "demo-button-active-low": true
+}
+```
+
+Note that we also need to add `"demo-button-active-low": true` because the user button on this board is low when pressed.
+
+NOTE: Changes to the configured start address of flash generally require a CMake delete cache and reconfigure operation so that the MBED_UPLOAD_BASE_ADDR variable can be initialized with the right value.  So, you will need to do that if you had previously configured the project. 
 
 ## Additional Features
 
