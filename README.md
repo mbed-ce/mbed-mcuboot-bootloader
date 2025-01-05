@@ -34,9 +34,7 @@ The application header info section is at the beginning of the "primary memory s
 
 When deciding what to boot/update, the mcuboot bootloader looks at an installed application's header info, which is a special struct prepended to the application binary. It uses this header info to validate that there is a bootable image installed in the "slot".
 
-By default, this header is configured to be 4kB in size. This can be adjusted using the configuration parameter `mcuboot.header_size`. 
-
-**However,** due to the way the FlashIAP block device currently works while erasing, the header_size should be configured to be the size of an erase sector (4kB in the case of an nRF52840). Erasing using the FlashIAPBlockDevice only works if the given address is erase-sector aligned! On the other hand, there is a hard upper limit of `< 65536` enforced by imgtool script. This needs to be carefully taken into consideration when choosing a MCU. Because a erase-sector of size >=4KB <64KB may actually not be available between the end of bootloader and start of primary application. For example, STM32F767/9xGx series MCU with dual bank enabled cannot satisfy this constraint. 
+By default, this header is configured to be 4kB in size. This can be adjusted using the configuration parameter `mcuboot.header_size`.
 
 This header is prepended to the application binary during the signing process (explained later).
 
