@@ -124,16 +124,17 @@
 
             // Since STM32H743 boards have no external block device, keep everything in the MCU flash.
             "app.secondary-slot-in-flash": true,
-            "app.secondary-slot-flash-start-addr": "0x100000",
+            "app.secondary-slot-flash-start-addr": "0x08100000",
 
             // Slot size can be as big as 896k, since we need to reserve the first flash sector for the bootloader
             // and the last flash sector for scratch space
-            "mcuboot.primary-slot-address": "0x20000",
+            "mcuboot.primary-slot-address": "0x08020000",
             "mcuboot.max-img-sectors": "7", // 7 flash sectors per slot
             "mcuboot.slot-size": "0xE0000",
+            "mcuboot.flash-block-size": 32, // Flash program size is 32
 
             // STM32H7 flash sector size is 128k, so we need to make the scratch region at least that big
-            "mcuboot.scratch-address": "0x1E0000",
+            "mcuboot.scratch-address": "0x081E0000",
             "mcuboot.scratch-size": "0x20000"
 
         },
