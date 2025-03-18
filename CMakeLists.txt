@@ -3,11 +3,14 @@ cmake_policy(VERSION 3.19)
 
 set(MBED_APP_JSON_PATH mbed_app.json5)
 
-include(mbed-os/tools/cmake/app.cmake)
+include(mbed-os/tools/cmake/mbed_toolchain_setup.cmake)
+
+project(mbed-mcuboot-bootloader
+	LANGUAGES C CXX ASM)
+
+include(mbed_project_setup)
 
 add_subdirectory(mbed-os)
-
-project(mbed-mcuboot-bootloader)
 
 set(MBED_MCUBOOT_BOOTLOADER_SOURCES
 	secondary_bd.cpp
@@ -23,5 +26,3 @@ target_link_libraries(${CMAKE_PROJECT_NAME}
 	mbed-storage
 	mbed-mcuboot)
 mbed_set_post_build(${CMAKE_PROJECT_NAME})
-
-mbed_finalize_build()

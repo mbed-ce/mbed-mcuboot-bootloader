@@ -17,8 +17,9 @@
         "*": {
             "platform.stdio-baud-rate": 115200,
             "target.c_lib": "small",
+            "target.application-profile": "bare-metal",
             "mcuboot.log-enable": true,
-            "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_INFO", // Change DEBUG to INFO for debug prints
+            "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_INFO", // Change INFO to DEBUG for debug prints
             "mbed-trace.enable": true,
             "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
             "mbed-trace.fea-ipv6": false,
@@ -149,6 +150,32 @@
             "mcuboot.scratch-size": "0x40000",
             "mcuboot.max-img-sectors": "0x180",
             "mcuboot.read-granularity": 1
+        },
+
+        "NUCLEO_L452RE_P": {
+            // Configure bootloader to live in the first 128k of flash
+            "target.memory_bank_config": {
+                "IROM1": {
+                    "size": 0x20000
+                }
+            },
+
+            // Sector size is 2k, make the scratch region use the last 8k of flash so it uses 4 sectors
+            "mcuboot.scratch-address": 0x0807E000,
+            "mcuboot.scratch-size": 0x2000,
+
+            // Primary and secondary slot need to fit in the remaining 376k of flash (512k total - 128k - 8k)
+            "mcuboot.slot-size": 0x2F000, // 188kiB
+
+            // Primary slot starts right after the bootloader
+            "mcuboot.primary-slot-address": 0x08020000,
+
+            "mcuboot.max-img-sectors": 94, // 94 flash sectors per slot
+            "mcuboot.flash-block-size": 8, // Flash program size is 8
+
+            // Since STM32 nucleo boards have no external block device, keep everything in the MCU flash.
+            "app.secondary-slot-in-flash": true,
+            "app.secondary-slot-flash-start-addr": 0x0804F000 // primary-slot-address + slot-size
         }
     }
 }

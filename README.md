@@ -216,6 +216,15 @@ Once your target has been programmed, open a serial terminal to view the debug o
 
 ```
 
+#### Junk Data in Magic
+If, instead of the application running, you get output similar to this:
+```
+[INFO][MCUb]: Primary image: magic=bad, swap_type=0x1, copy_done=0x2, image_ok=0
+<snip>                                 
+[INFO][MCUb]: Boot source: none
+```
+this may be caused by data in the "magic" region that mcuboot uses near the end of each slot. mcuboot expects this region to either have a valid signature, or be erased. If you had previously flashed an application to this board that had data in this region of flash, mcuboot may conclude that this is a "bad" magic value and not boot your application. To fix this, simply use your programmer of choice (e.g. STM32CubeProgrammer or J-Flash) to mass erase your chip, then reflash the bootloader and application.
+
 ### Erasing the secondary slot
 
 By pressing the target's button (BUTTON1, if there are multiple), you will initiate erasure of the secondary slot block device in preparation for programming the update. You should see output similar to the following:
@@ -340,7 +349,7 @@ You want the entry in MEMORY called `m_text` or `m_flash` or `m_rom` -- wherever
 
 If the entry is defined in terms of `MBED_CONFIGURED_ROM_BANK` constants, this linker script has already been upgraded.  If not, and it references `MBED_APP_START` and `MBED_APP_SIZE`, or it just uses constant addresses, then this target still needs to be upgraded.
 
-Please file a PR with mbed-ce/mbed-os asking for the linker script to be updated, or, if you are feeling adventurous, you can update the linker script yourself.  Updates can be as simple as defining the text section in terms of the `MBED_CONFIGURED_ROM_BANK` constants, though there are also a number of other fixes that are useful for older linker scripts.
+Please file an issue with mbed-ce/mbed-os asking for the linker script to be updated, or, if you are feeling adventurous, you can update the linker script yourself.  Updates can be as simple as defining the text section in terms of the `MBED_CONFIGURED_ROM_BANK` constants, though there are also a number of other fixes that are useful for older linker scripts.
 
 ### Setting Up Bootloader mbed_app.json
 
@@ -388,7 +397,7 @@ Now, you can flash the bootloader to your device using the steps above.  Make su
 ```
 
 ### Setting Up Application mbed_app.json
-Now we can set up the demo app.  Its mbed_app.json should look the same as the bootloader, *except* the `target.memory_bank_config` section.  We want this application to go into the application region of the primary slot. So, we must set the start address to `mcuboot.primary-slot-address` + `mcuboot.header-size` (which defaults to 0x1000).  Meanwhile, the size should be set to extend to the end of the primary slot (yes there are some TLVs after there, but the image tool will warn if there isn't enough space).
+Now we can set up the demo app.  Its mbed_app.json section for your target should look the same as the bootloader, *except* the `target.memory_bank_config` section.  We want this application to go into the application region of the primary slot. So, we must set the start address to `mcuboot.primary-slot-address` + `mcuboot.header-size` (which defaults to 0x1000).  Meanwhile, the size should be set to extend to the end of the primary slot (yes there are some TLVs after there, but the image tool will warn if there isn't enough space).
 
 So we'd add the following block:
 ```js
