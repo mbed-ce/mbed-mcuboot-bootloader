@@ -74,7 +74,7 @@ This repository and the demo app both contain a default secondary_bd.cpp which u
 
 The returned BlockDevice is expected to have a size equivalent to the configuration `mcuboot.slot-size` as mentioned previously.  The default implementation uses a SlicingBlockDevice to reduce the BD size to meet this constraint.
 
-Since the Mbed-OS mcuboot port uses Mbed's `BlockDevice` API, there is a lot of flexibility when providing the secondary memory region. For example, you can use a `FlashIAPBlockDevice` if your application is small enough to fit two copies in the internal flash. If you also use your external flash chip for data storage you can simply wrap the whole `BlockDevice` object in a `SlicingBlockDevice` with a nonzero offset to give mcuboot access to a certain region of your external flash.
+Since the Mbed-OS mcuboot port uses Mbed's `BlockDevice` API, there is a lot of flexibility when providing the secondary memory region. For example, if you enable the `secondary-slot-in-flash` option, you can use a `FlashIAPBlockDevice` if your application is small enough to fit two copies in the internal flash. If you also use your external flash chip for data storage you can simply wrap the whole `BlockDevice` object in a `SlicingBlockDevice` with a nonzero offset to give mcuboot access to a certain region of your external flash.
 
 ## Additional Configuration
 
@@ -90,9 +90,6 @@ By default, the mcuboot repository/library is configured to build a bootloader, 
 
 Other commonly-used configuration options are:
 ```
-"target.restrict_size",
-"target.mbed_app_start",
-"target.mbed_app_size",
 "mcuboot.primary-slot-address",
 "mcuboot.slot-size",
 "mcuboot.scratch-address",
@@ -318,7 +315,7 @@ Target ROM banks: -----------------------------------------------------------
 
 We can see that there is exactly one ROM bank called EXT_FLASH, and its size is 8.0 MiB.  If you see multiple ROM banks instead of one, you will need to consult your target MCU's manual and linker script to determine which one is used for the main application.
 
-The other piece of information that you need is the page and sector size of your ROM bank, and of the secondary block device if not using XIP mode. This will require a trip to your MCU datasheet, or the datasheet for the external flash for chips that don't have internal flash like the MIMXRT1060.  Note that mcuboot *can* handle flashes with non-uniform sector sizes, but you will have to be extra careful about assigning things to sectors correctly.
+The other piece of information that you need is the page size (program size) and the sector size (erase size) of your ROM bank, and of the secondary block device if not using XIP mode. This will require a trip to your MCU datasheet, or the datasheet for the external flash for chips that don't have internal flash like the MIMXRT1060.  Note that mcuboot *can* handle flashes with non-uniform sector sizes, but you will have to be extra careful about assigning things to sectors correctly.
 
 ### Allocating Memory
 

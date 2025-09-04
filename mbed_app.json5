@@ -21,23 +21,13 @@
             "mcuboot.log-enable": true,
             "mcuboot.log-level": "MCUBOOT_LOG_LEVEL_INFO", // Change INFO to DEBUG for debug prints
             "mbed-trace.enable": true,
-            "mbed-trace.max-level": "TRACE_LEVEL_DEBUG",
+            "mbed-trace.max-level": "TRACE_LEVEL_INFO", // Change INFO to DEBUG for debug prints
             "mbed-trace.fea-ipv6": false,
 
             // Uncomment to enable encryption of the image
             // "mcuboot.encrypt-rsa": true
         },
-        // "NRF52840_DK": {
-        //     "target.features_remove": ["CRYPTOCELL310"],
-        //     "target.macros_remove": ["MBEDTLS_CONFIG_HW_SUPPORT"],
-        //     "mcuboot.primary-slot-address": "0x20000",
-        //     "mcuboot.slot-size": "0xC0000",
-        //     "mcuboot.scratch-address": "0xE0000",
-        //     "mcuboot.scratch-size": "0x20000",
-        //     "mcuboot.max-img-sectors": "0x180",
-        //     "mcuboot.read-granularity": 4,
-        //     "qspif.QSPI_MIN_PROG_SIZE": 4
-        // },
+
         // "EP_AGORA": {
         //     "target.features_remove": ["CRYPTOCELL310"],
         //     "target.macros_remove": ["MBEDTLS_CONFIG_HW_SUPPORT"],
@@ -176,6 +166,32 @@
             // Since STM32 nucleo boards have no external block device, keep everything in the MCU flash.
             "app.secondary-slot-in-flash": true,
             "app.secondary-slot-flash-start-addr": 0x0804F000 // primary-slot-address + slot-size
+        },
+
+        "NRF52840_DK": {
+            "target.features_remove": ["CRYPTOCELL310"],
+            "target.macros_remove": ["MBEDTLS_CONFIG_HW_SUPPORT"],
+
+            "target.memory_bank_config": {
+                "IROM1": {
+                    "size": 0x20000
+                }
+            },
+
+            // Primary slot starts right after the bootloader and takes up 768k of flash
+            "mcuboot.primary-slot-address": 0x20000,
+            "mcuboot.slot-size": 0xC0000,
+
+            // Scratch sector uses the last 128k of flash
+            "mcuboot.scratch-address": 0xE0000,
+            "mcuboot.scratch-size": 0x20000,
+
+            // Max flash sectors per slot. 768k/4k = 192
+            "mcuboot.max-img-sectors": 192,
+
+            // Flash is word addressable
+            "mcuboot.read-granularity": 4,
+
         }
     }
 }
